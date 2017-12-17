@@ -1,0 +1,127 @@
+<%include header%>
+    <div class="row">
+        <form action="/add" method="get" class="ff">
+            <button type="submit" class="btn btn-primary">添加</button>
+        </form>
+        <button class="btn btn-danger removeAll">全部删除</button>
+    </div>
+    <div class="table-responsive tablemain">
+            <table class="table table-hover  table-condensed text-center">
+                    <thead>
+                        <tr>
+                            <td>
+                                <h4>
+                                    <input id="allBtn" type="checkbox">
+                                </h4>
+                            </td>
+                            <td>
+                                <h4>学号</h4>
+                            </td>
+                            <td>
+                                <h4>姓名</h4>
+                            </td>
+                            <td>
+                                <h4>年龄</h4>
+                            </td>
+                            <td>
+                                <h4>性别</h4>
+                            </td>
+                            <td>
+                                <h4>专业</h4>
+                            </td>
+                        
+                            <td>
+                                <h4>操作</h4>
+                            </td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <%docs.forEach(function (doc) {  %>
+                            <tr class="main">
+                                <td>
+                                    <h4>
+                                        <input type="checkbox" name="box" value="<%=doc.studentID%>">
+                                    </h4>
+                                </td>
+                                <td>
+                                    <h4>
+                                        <%=doc.studentID%>
+                                    </h4>
+                                </td>
+                                <td>
+                                    <h4>
+                                        <%=doc.name%>
+                                    </h4>
+                                </td>
+                                <td>
+                                    <h4>
+                                        <%=doc.age%>
+                                    </h4>
+                                </td>
+                                <td>
+                                    <h4>
+                                        <%=doc.sex%>
+                                    </h4>
+                                </td>
+                                <td>
+                                    <h4>
+                                        <%=doc.profession%>
+                                    </h4>
+                                </td>
+                            
+                                <td>
+                                    <a class="edit" href="/edit/<%=doc.studentID%>" >编辑</a>
+                                    <a class="remove" href="/remove/<%=doc.name%>/<%=doc.sex%>/<%=doc.studentID%>">删除</a>
+                                </td>
+                            </tr>
+                            <%})%>
+                    </tbody>
+            
+                </table>
+    </div>
+  
+  
+    <!--添加分页-->
+    <%include page%>
+  
+
+        <script>
+            $(function () {
+                //全选和全不选
+                $('#allBtn').click(function () {
+                    var b = $('input[name=box]');
+                    for (var i = 0; i < b.length; i++) {
+                        b[i].checked = $(this)[0].checked;
+                    }
+                })
+                //下面全选中反选上面
+                $("[name=box]:checkbox").each(function () {
+                    $(this).click(function () {
+                        if ($("[name=box]:checked").length == $("[name=box]:checkbox").length) {
+                            $("#allBtn").attr("checked", "checked");
+                        }
+                        else $("#allBtn").removeAttr("checked");
+                    });
+                });
+                 //ajax
+                $('.removeAll').on('click', function () {
+                    //选中的个数
+                    var selectBtn = $('[name=box]:checked').length;
+                    if (selectBtn == 0) {
+                        confirm('必须选择一项！');
+                    }
+                    var selectValue = $('[name=box]:checked');
+                    var queryArray = [];
+                    for (var i = 0; i < selectBtn; i++) {
+                        queryArray.push(selectValue[i].value);
+                    }
+                    var a = { name: queryArray }
+                    $.post('/removeAll', a, function (res) {
+                        if (res.code == 200) {
+                            location.href = '/';
+                        }
+                    })
+                })
+            });
+        </script>
+        <%include footer%>

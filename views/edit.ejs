@@ -1,0 +1,65 @@
+<%include header%>
+<div class="form">
+    <form class="form-horizontal addForm" method="post" action="/edit/<%=doc.studentID%>">
+        <div class="form-group">
+            <label  class="col-sm-2 control-label">姓名</label>
+            <div class="col-sm-5">
+                <input type="text" class="form-control" name="name" pattern="^[\u4e00-\u9fa5]{2,4}$" value="<%=doc.name%>" placeholder="请输入姓名">
+            </div>
+        </div>
+        <div class="form-group">
+            <label  class="col-sm-2 control-label">学号</label>
+            <div class="col-sm-5">
+                <input type="text" class="form-control" name="studentID" disabled value="<%=doc.studentID%>" placeholder="请输入学号">
+            </div>
+        </div>
+        <div class="form-group">
+            <input type="hidden" class="sex" >
+            <label  class="col-sm-2 control-label">性别</label>
+            <label class="radio-inline" style="left:17px">
+                <input type="radio" name="sex" value="男" <%if(doc.sex=='男'){%>checked<%}%>> 男
+            </label>
+            <label class="radio-inline" style="left:17px">
+                <input type="radio" name="sex" value="女" <%if(doc.sex=='女'){%>checked<%}%>> 女
+            </label>
+        </div>
+
+        <div class="form-group">
+            <label  class="col-sm-2 control-label">年龄</label>
+            <div class="col-sm-5">
+                <input type="text" class="form-control" name="age" value="<%=doc.age%>" placeholder="请输入年龄">
+            </div>
+        </div>
+        <div class="form-group">
+            <label  class="col-sm-2 control-label">专业</label>
+            <div class="col-sm-5">
+                <select class="form-control"  name="profession" >
+                    <option value="计算机应用技术" <%if(doc.profession=='计算机应用技术'){%>selected<%}%>>计算机应用技术</option>
+                    <option value="网络安全"  <%if(doc.profession=='网络安全'){%>selected<%}%>>网络安全</option>
+                    <option value="移动互联"  <%if(doc.profession=='移动互联'){%>selected<%}%>>移动互联</option>
+                    <option value="物联网"  <%if(doc.profession=='物联网'){%>selected<%}%>>物联网</option>
+                    <option value="机车车辆"  <%if(doc.profession=='机车车辆'){%>selected<%}%>>机车车辆</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label  class="col-sm-2 control-label">入学时间</label>
+            <div class="col-sm-5">
+                <input type="date" class="form-control" name="goSchoolDate" value="<%=doc.goSchoolDate%>" placeholder="请输入入学时间">
+            </div>
+        </div>
+        <div class="form-group ">
+            <label  class="col-sm-2 control-label">爱好</label>
+            <div class="col-sm-5" >
+                <input type="text" class="form-control" name="interest" value="<%=doc.interest%>" placeholder="请输入爱好">
+            </div>
+        </div>
+        <div class="form-group ">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-primary pull-left" >编辑</button>
+            </div>
+        </div>
+    </form>
+    <img src="/images/work.jpg" alt="work">
+</div>
+<%include footer%>

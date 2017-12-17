@@ -1,0 +1,106 @@
+
+body{
+  height: 100%;
+  width: 100%;
+  /* background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-image: url("../images/bg.jpg");
+  background-size:auto; */
+  /*禁止全选*/
+  -webkit-user-select:none;
+  -moz-user-select:none;
+  -ms-user-select:none;
+  user-select:none;
+}
+
+header h1{
+  /*文字倒影*/
+  -webkit-box-reflect:below 0 -webkit-linear-gradient(transparent,transparent 50%,rgba(255,255,255,.3));
+}
+.ff{
+  display: inline-block;
+}
+table,.addForm{
+  margin: 50px auto 0;
+}
+td h4{
+  font-weight: bold;
+}
+.tablemain{
+  margin-top: 30px;
+  padding-bottom: 50px;
+}
+.more,.edit,.remove{
+  position: relative;
+  top: 10px;
+  padding: 10px;
+  background: #2aabd2;
+  color: #ffffff;
+  border-radius: 5px;
+}
+.edit{
+  background: #3e8f3e;
+}
+.remove{
+  margin-left: 10px;
+  background: #e38d13;
+}
+.more:link,.remove:link,.edit:link,.add:link,.removeAll:link,.nextpage a:link,.prepage a:link{
+  color: #ffffff;
+  text-decoration: none;
+}
+.more:visited,.remove:visited,.edit:visited,.add:visited,.removeAll:visited,.nextpage a:visited,.prepage a:visited{
+  color: #ffffff;
+  text-decoration: none;
+}
+.more:hover,.remove:hover,.edit:hover,.add:hover,.removeAll:hover,.nextpage a:hover,.prepage a:hover{
+  color: #ffffff;
+  text-decoration: none;
+}
+.more:active,.remove:active,.edit:active,.add:active,.removeAll:active,.nextpage a:active,.prepage a:active{
+  color: #ffffff;
+  text-decoration: none;
+}
+.main td h4{
+  font-weight: normal;
+}
+.addForm{
+  padding:10px auto;
+}
+.addForm1{
+  position: relative;
+  left: 100px;
+}
+.form{
+  position: relative;
+  margin: 50px auto;
+  padding:20px 5px 0px;
+  width: 60%;
+  background: #ffffff;
+  border:1px solid #2aabd2;
+  box-shadow: 0 0 5px 5px #2aabd2;
+}
+img{
+  position: absolute;
+  top: 40px;
+  right: 0;
+  width: 262px;
+  height: 345px;
+}
+.radio-inline{
+  position: relative;
+  left:-200px;
+}
+.nextpage a{float:right;margin-bottom: 10px; text-decoration:none;padding:.5em 1em;color:#ffffff;font-weight:bold;border-radius: 5px;background:#843534}
+.prepage a{float:right;margin-bottom: 10px;text-decoration:none;padding:.5em 1em;color:#ffffff;font-weight:bold;border-radius: 5px;background:#843534}
+@media (max-width:400px){
+ header h1{
+    font-size: 26px;
+  }
+  .form{
+    width: auto;
+  }
+  img{
+    display: none;
+  }
+}
